@@ -1,9 +1,11 @@
+import { useNavigate } from 'react-router-dom';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import Icon from '@/components/ui/icon';
 
 const articles = [
   {
+    slug: 'procrastination',
     title: 'Как победить прокрастинацию: 7 практических советов',
     excerpt: 'Разбираем причины откладывания дел и эффективные способы борьбы с этой привычкой на основе научных исследований.',
     category: 'Практика',
@@ -11,6 +13,7 @@ const articles = [
     date: '15 ноября 2024'
   },
   {
+    slug: 'pomodoro',
     title: 'Pomodoro на практике: мой опыт за 30 дней',
     excerpt: 'Личный эксперимент с техникой Pomodoro, ошибки новичков и как адаптировать методику под свой ритм жизни.',
     category: 'Опыт',
@@ -18,6 +21,7 @@ const articles = [
     date: '10 ноября 2024'
   },
   {
+    slug: 'planning',
     title: 'Планирование недели: система, которая реально работает',
     excerpt: 'Пошаговый алгоритм еженедельного планирования с шаблонами и примерами для разных типов задач.',
     category: 'Методика',
@@ -25,6 +29,7 @@ const articles = [
     date: '5 ноября 2024'
   },
   {
+    slug: 'work-life-balance',
     title: 'Баланс работы и жизни: миф или реальность?',
     excerpt: 'Честный разговор о work-life balance, почему классические советы не работают и что делать вместо этого.',
     category: 'Размышления',
@@ -34,6 +39,8 @@ const articles = [
 ];
 
 const Articles = () => {
+  const navigate = useNavigate();
+
   return (
     <section id="articles" className="py-20 px-6">
       <div className="container mx-auto max-w-6xl">
@@ -50,6 +57,7 @@ const Articles = () => {
               key={index}
               className="hover:shadow-lg transition-all duration-300 hover:-translate-y-1 cursor-pointer animate-scale-in"
               style={{ animationDelay: `${index * 0.1}s` }}
+              onClick={() => navigate(`/article/${article.slug}`)}
             >
               <CardHeader>
                 <div className="flex items-center justify-between mb-2">
